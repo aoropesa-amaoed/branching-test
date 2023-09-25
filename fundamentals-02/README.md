@@ -15,10 +15,10 @@
    - Comprehend the importance of function scope and variable scope in programming.
 
 5. **Error Handling in Functions:** 
-   - Identify and handle errors and exceptions within functions.
+   - Identify and handle errors and exceptions within functions. (pending)
 
 7. **Best Practices:** 
-   - Apply best practices for naming conventions and code organization when working with functions.
+   - Apply best practices for naming conventions and code organization when working with functions. (pending)
 
 ## Topic: Arrays
 
