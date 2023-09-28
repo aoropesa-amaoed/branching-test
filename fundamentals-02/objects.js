@@ -27,3 +27,11 @@ console.log(person.firstName); // Output: "Jane"
 
 console.log(person)
 person.sayHello()
+console.log('----- Add new property to object -----')
+person.occupation = "Software Engineer"
+console.log(person)
+person.address.country = "USA"
+
+console.log('----- Delete property from object -----')
+delete person.hobbies
+console.log(person)
