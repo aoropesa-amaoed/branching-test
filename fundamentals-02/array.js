@@ -57,3 +57,49 @@ for (const person of demographicTwo) {
         }
     }
 }
+
+for (let i = 0; i < 3; i++) {
+    console.log(demographic[i])
+}
+
+console.log('------------- while loop -------------')
+
+let count = 0;
+while (count < 5) {
+    console.log("Count is: " + count);
+    count++;
+}
+
+console.log("Loop finished.");
+
+console.log('------------- array operations -------------')
+
+console.log('-------------- find --------------')
+const myArray = [1, 2, 3, 4, 5, 6];
+const targetElement = 3;
+
+const foundElement = myArray.find(element => element === targetElement / 2);
+
+if (foundElement !== undefined) {
+    const index = myArray.indexOf(foundElement);
+    console.log(`Element ${targetElement} found at index ${index}.`);
+} else {
+    console.log(`Element ${targetElement} not found in the array.`);
+}
+
+
+console.log('------------- sort -------------')
+const numbers = [5, 1, 3, 2, 4]
+numbers.sort((a, b) => a - b);
+// if a should be sorted before b, should return negative number
+// if b should be sorted before a,  should return positive number
+
+console.log(numbers); // Output: [1, 2, 3, 4, 5]
+
+console.log('------------- filter -------------')
+const words = ["apple", "banana", "cherry", "date", "grape"];
+
+// Filter words that contain the substring "an"
+const filteredWords = words.filter(word => word.includes("ap"));
+
+console.log(filteredWords); // Output: ["apple", "grape"]
