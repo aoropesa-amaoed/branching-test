@@ -12,7 +12,29 @@ for (const key of keys) {
             input = "";
             displayInput.innerHTML = "";
             displayOutput.innerHTML = "";
-        } else {
+        } else if (value === "=") {
+            const result = eval(prepareInput(input))
+            displayOutput.innerHTML = result;
+        }
+
+        else if (value === "brackets") {
+            if (input.indexOf("(") === -1 ||
+                input.indexOf("(") !== - 1 &&
+                input.indexOf(")") !== -1 &&
+                input.lastIndexOf("(") < input.lastIndexOf(")")) {
+                input += "("
+            } else if (
+                input.indexOf("(") !== -1 &&
+                input.indexOf(")") === -1 ||
+                input.indexOf("(") !== -1 &&
+                input.indexOf(")") !== -1 &&
+                input.lastIndexOf("(") > input.lastIndexOf(")")) {
+                input += ")";
+            }
+
+            displayInput.innerHTML = cleanInput(input)
+        }
+        else {
             if (validateInput(value)) {
                 input += value;
                 displayInput.innerHTML = cleanInput(input);
@@ -21,19 +43,18 @@ for (const key of keys) {
     })
 }
 
+
 function validateInput(value) {
-    let lastInput = input.slice(-1)
     const operators = ["+", "-", "*", "/"];
+    const decimalCount = (input.match(/\./g) || []).length;
 
-    if (value == "." && lastInput == ".") {
-        return false;
-    }
 
-    if (operators.includes(value)) {
-        if (operators.includes(lastInput)) {
+    for (let i = 0; i < input.length; i++) {
+        const char = input[i];
+        if (operators.includes(value) && operators.includes(char)) {
             return false;
-        } else {
-            return true;
+        } else if (value === "." && decimalCount >= 1 || value === "." && (i < input.length - 1 && input[i + 1] === ".")) {
+            return false;
         }
     }
 
@@ -60,6 +81,18 @@ function cleanInput(input) {
             inputArr[i] = `<span class="brackets">)</span>`
         } else if (inputArr[i] == "%") {
             inputArr[i] = `<span class="percent">%</span>`
+        }
+    }
+
+    return inputArr.join("");
+}
+
+function prepareInput(input) {
+    const inputArr = input.split("");
+
+    for (let i = 0; i < inputArr.length; i++) {
+        if (inputArr[i] === "%") {
+            inputArr[i] = "/100";
         }
     }
 
