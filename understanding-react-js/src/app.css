@@ -70,6 +70,11 @@ h1 {
     margin-bottom: 1rem;
 }
 
+.todo p {
+    user-select: none;
+    cursor: pointer;
+}
+
 .fa-trash {
     margin-left: 0.75rem;
 }
